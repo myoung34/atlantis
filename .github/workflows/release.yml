@@ -32,6 +32,8 @@ jobs:
     steps:
       - name: Copy Repo Files
         uses: actions/checkout@master
+      - name: wait for upstream release
+        run: sleep 10800 # sleep for 3 hours to give atlantis time to build and push
       - name: get repo
         run: echo 'REPO='$(echo ${{ github.repository }} | cut -d/ -f2)>> $GITHUB_ENV
       - name: get version
